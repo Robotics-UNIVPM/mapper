@@ -10,15 +10,11 @@ I blocchi da considerare sono:
 - Modulo per trasmissione dati in real-time
 - Scheda Arduino
 
-
-#Scheda Arduino
-blah blah blah è sempre Lui, magari misuriamo quanta CPU e RAM ci mangia il framework Arduino...
-
 #IMU
 Una volta scelto il chip I datasheet dovrebbero essere soddisfacenti.
 Abbiamo parlato di:
-MPU6050
-MPU9250 (include magnetometro)
+- MPU6050
+- MPU9250 (include magnetometro)
 ...
 
 #Motori DC
