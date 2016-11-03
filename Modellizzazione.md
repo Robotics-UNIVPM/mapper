@@ -32,10 +32,10 @@ Sono marginalmente interessanti anche i valori di picco di corrente in partenza,
 
 Features:
 
-Working Voltage                   Parameters                    DC 3V                   DC 5V                   DC 6V
+     Working Voltage                   Parameters                    DC 3V                   DC 5V                 DC 6V
 
-Motor Parameters                    RPM                                             125R / minute
- (No Gear Box)
+     Motor Parameters                RPM                                             125R / minute
+      (No Gear Box)
 	
                                    Current                                           80-100mA
 	
@@ -47,7 +47,7 @@ Motor Parameters                    RPM                                         
 
                                 Output Torque                  0.8kg.cm               1.0kg.cm                 1.1kg.cm
 
-Gear Box Parameters
+    Gear Box Parameters
 
                               No-load car speed             25.9meter/minute       41.4meter/minute         47.7meter/minute
 
