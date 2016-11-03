@@ -32,7 +32,7 @@ Sono marginalmente interessanti anche i valori di picco di corrente in partenza,
 
 Features:
 
-     Working Voltage                   Parameters                    DC 3V                   DC 5V                 DC 6V
+     Working Voltage               Parameters                    DC 3V                   DC 5V                 DC 6V
 
      Motor Parameters                RPM                                             125R / minute
       (No Gear Box)
