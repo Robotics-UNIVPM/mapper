@@ -29,45 +29,12 @@ Se ne potrebbero tirare fuori le matrici della dinamica se il sistema si comport
 
 Sono marginalmente interessanti anche i valori di picco di corrente in partenza, frenata e inversione (forse stallo).
 
-
-Features:
-
-     Working Voltage               Parameters                    DC 3V                   DC 5V                 DC 6V
-
-     Motor Parameters                RPM                                             125R / minute
-      (No Gear Box)
-	
-                                   Current                                           80-100mA
-	
-                                 Reduction                                             48:1
-
-                                No-load Speed                 125R/minute           200R/minute               230R/minute
-
-                                 Load Speed                   95R/minute            152R/minute               175R/minute
-
-                                Output Torque                  0.8kg.cm               1.0kg.cm                 1.1kg.cm
-
-    Gear Box Parameters
-
-                              No-load car speed             25.9meter/minute       41.4meter/minute         47.7meter/minute
-
-                                   Current                     110-130mA              120-140mA                 130-150mA
-
-                              Max wheel diameter                                        6.5cm
-
-                                  Dimensions                                       70mm x 22mm x 18mm            
-                                    
-                                    Weight                                              50g            
-
-                                     Noise                                             < 65dB
-
-
 #Alimentazione
-Per comodità si intende usare un powerbank per alimentare a 5V l'intero sistema. 
+Per comodità si intende usare un powerbank per alimentare a 5V l'intero sistema.
 È fondamentale assicurarsi che fornisca una tensione stabile al variare della carica e della corrente erogata.
 
 #Sensore Ultrasuoni
-Abbiamo disponibili HC-SR04, sensori ad ultrasuoni di fascia bassa. 
+Abbiamo disponibili HC-SR04, sensori ad ultrasuoni di fascia bassa.
 Sarà tramite questi che saranno acquisiti i dati per la mappatura.
 É imporante conoscerne la sensibilità, la risoluzione e il "campo visivo" in modo più dettagliato possibile.
 Ci sono da condurre prove con ostacoli di diversi materiali, forme e dimensioni posti a varie distanze e orientazioni
