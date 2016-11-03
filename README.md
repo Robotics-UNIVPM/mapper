@@ -1,8 +1,8 @@
 # Mapper
 Questa repo è dedicata alle attività di laboratorio di automazione condotte da studenti del secondo anno di Ingegneria Informatica
-e dell'Automazione assistiti dal Professor Conte Giuseppe.
+e dell'Automazione presso l'Università Politecnica delle Marche assistiti dal Professor Conte Giuseppe.
 
 Il progetto a cui si punta è la realizzazione di uno robot o più robot eventualmente coordinati per la mappatura di una stanza.
 
-Sono ancora da definire gli scenari a cui ci limiteremo, questo sarà possibile quando si avranno dei modelli di riferimento per le 
+Sono ancora da definire gli scenari a cui ci limiteremo, questo sarà possibile quando si avranno dei modelli di riferimento per le
 componenti che saranno impiegate
