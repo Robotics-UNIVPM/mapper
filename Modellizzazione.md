@@ -16,7 +16,7 @@ Abbiamo parlato di:
 - MPU6050
 - MPU9250 (giroscopio, accelerometro, magnetometro)
 ...
--MPU9250 : https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf
+- MPU9250 : https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf
 
 #Motori DC
 Vogliamo approssimare un modello dinamico dei nostri motori.
@@ -29,7 +29,7 @@ C'è da fare attenzione a non introdurre attriti eccessivi.
 Se ne potrebbero tirare fuori le matrici della dinamica se il sistema si comporta bene.
 
 Sono marginalmente interessanti anche i valori di picco di corrente in partenza, frenata e inversione (forse stallo).
--http://hobbycomponents.com/motors-and-servos/124-smart-car-wheel-robot-plastic-dc-3v-6v-drive-gear-motor-with-tire-
+- http://hobbycomponents.com/motors-and-servos/124-smart-car-wheel-robot-plastic-dc-3v-6v-drive-gear-motor-with-tire-
 
 #Alimentazione
 Per comodità si intende usare un powerbank per alimentare a 5V l'intero sistema.
@@ -40,13 +40,13 @@ Abbiamo disponibili HC-SR04, sensori ad ultrasuoni di fascia bassa.
 Sarà tramite questi che saranno acquisiti i dati per la mappatura.
 É imporante conoscerne la sensibilità, la risoluzione e il "campo visivo" in modo più dettagliato possibile.
 Ci sono da condurre prove con ostacoli di diversi materiali, forme e dimensioni posti a varie distanze e orientazioni
--HC-SR04 (ultrasuoni): http://www.micropik.com/PDF/HCSR04.pdf
+- HC-SR04 (ultrasuoni): http://www.micropik.com/PDF/HCSR04.pdf
 
 #Trasmissione dei dati
 Abbiamo a disposizione ESP8266 e alcuni moduli bluetooth di cui misurare le prestazioni e la facilità di utilizzo.
--ESP8266 (wi-fi): http://download.arduino.org/products/UNOWIFI/0A-ESP8266-Datasheet-EN-v4.3.pdf
--HC-06 (bluetooth): https://www.olimex.com/Products/Components/RF/BLUETOOTH-SERIAL-HC-06/resources/hc06.pdf
+- ESP8266 (wi-fi): http://download.arduino.org/products/UNOWIFI/0A-ESP8266-Datasheet-EN-v4.3.pdf
+- HC-06 (bluetooth): https://www.olimex.com/Products/Components/RF/BLUETOOTH-SERIAL-HC-06/resources/hc06.pdf
 
 #Scheda Arduino
 Bisogna verificare che questa abbia potenza di calcolo e memoria sufficiente per coordinare le varie parti del sistema.
--Arduino: http://uk.rs-online.com/webdocs/0e8b/0900766b80e8ba21.pdf
+- Arduino: http://uk.rs-online.com/webdocs/0e8b/0900766b80e8ba21.pdf
