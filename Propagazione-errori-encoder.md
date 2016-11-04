@@ -25,7 +25,7 @@ E = E_r*R = 2πR / N
 
 Se il robot è fermo potremo conoscere la direzione in cui punta a meno di
 
-± ε = ± 2 E / D = ± 4π R / (ND)
+± ε = ± (E/2) / (D/2)  = ± 2π R / (ND)
 
 Allo stato attuale:
 
@@ -33,15 +33,15 @@ N = 20,
 R = 3.5 cm,
 D = 12 cm
 
-ε ≅ 0.058 π rad = 10.5°
+ε ≅ 0.029 π rad = 5.2°
 
 Questo significa che anche prima di muoversi il robot non sa dove sta puntando
-in un campo largo più di 20°.
+in un campo largo più di 10°.
 Assumendo di poter controllare perfettamente la velocità di entrambi i motori
 durante uno spostamento rettilineo di un metro ci ritroveremo da qualche parte
 su un arco di ampiezza
 
-2ε * 1m = 36 cm
+2ε * 1m = 18 cm
 
 Nelle condizioni ipotizzate, all'interno di questo range la distrbuzione è
 porporzionale a quella dello sfasamento tra gli encoder destro e sinistro
