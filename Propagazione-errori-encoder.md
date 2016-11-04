@@ -10,9 +10,11 @@ ottici nella determinazione dell'orientazione.
 
 - N = numero di fori
 - R = raggio delle ruote
-- D = distanza tra le ruote (tra i punti di contatto ideali con il suolo)
+- D = distanza tra i centri delle ruote (tra i punti di contatto ideali con il
+	suolo)
 
-La risoluzione sulla rotazione, in radianti sarà di
+La risoluzione sulla misura della rotazione è l'angolo in radianti compreso tra
+due rising edge successivi, pari a
 
 E_r = 2π / N
 
