@@ -1,11 +1,11 @@
 #Encoder per determinare l'orientazione
 
-I KIT attuali sono dotati di dischi forati per encoder ottici sulle due ruote
+I kit attuali sono dotati di dischi forati per encoder ottici sulle due ruote
 motrici in configurazione differenziale, assumiamo rotolamento perfetto su
 superficie piana di entrambe le ruote e rigidità infinita delle parti
 meccaniche, oltre che di conoscerne le dimensioni esatte.
 
-Lo scopo di questi semplici conti geometrici è valutare l'efficacia dei sensori
+Lo scopo di queste considerazioni geometriche è valutare l'efficacia dei sensori
 ottici nella determinazione dell'orientazione.
 
 - N = numero di fori
@@ -18,12 +18,12 @@ due rising edge successivi, pari a
 
 E_r = 2π / N
 
-Questo si traduce in un errore lineare sull'ascissa curvilinea di ciascuna ruota
+Questo si traduce in un intervallo lungo l'ascissa curvilinea di ciascuna ruota
 pari a
 
 E = E_r*R = 2πR / N
 
-Se il robot è fermo potremo conoscere la direzione in cui punta a meno di
+Se il robot è fermo potremmo conoscere la direzione in cui punta a meno di
 
 ± ε = ± (E/2) / (D/2)  = ± 2π R / (ND)
 
@@ -43,13 +43,13 @@ su un arco di ampiezza
 
 2ε * 1m = 18 cm
 
-Nelle condizioni ipotizzate, all'interno di questo range la distrbuzione è
-porporzionale a quella dello sfasamento tra gli encoder destro e sinistro
+Nelle condizioni ipotizzate, all'interno di questo range la distribuzione è
+proporzionale a quella dello sfasamento tra gli encoder destro e sinistro
 (gaussiana?).
 
 Potrebbero essere realizzabili degli algoritmi che determinino questo sfasamento
 per apportare correzioni intelligenti, manca comunque la precisione nelle
-parti meccaniche sopratutto per i KIT di basso costo attualmente disponibili.
+parti meccaniche sopratutto per i kit di basso costo attualmente utilizzati.
 
 Per ora sembra essenziale utlizzare un altro sistema, il candidato più valido è
 un IMU con magnetometro, per avere come riferimento assoluto il campo magnetico
