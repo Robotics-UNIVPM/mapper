@@ -14,9 +14,7 @@ I blocchi da considerare sono:
 Una volta scelto il chip I datasheet dovrebbero essere soddisfacenti.
 Abbiamo parlato di:
 - MPU6050
-- MPU9250 (giroscopio, accelerometro, magnetometro)
-...
-- MPU9250 : https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf
+- MPU9250 (giroscopio, accelerometro, magnetometro): https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf
 
 #Motori DC
 Vogliamo approssimare un modello dinamico dei nostri motori.
