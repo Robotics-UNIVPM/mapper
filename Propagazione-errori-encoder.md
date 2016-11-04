@@ -45,7 +45,7 @@ su un arco di ampiezza
 
 Nelle condizioni ipotizzate, all'interno di questo range la distribuzione è
 proporzionale a quella dello sfasamento tra gli encoder destro e sinistro
-(gaussiana?).
+(triangolare).
 
 Potrebbero essere realizzabili degli algoritmi che determinino questo sfasamento
 per apportare correzioni intelligenti, manca comunque la precisione nelle
