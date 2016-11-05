@@ -27,6 +27,9 @@ Se il robot è fermo potremmo conoscere la direzione in cui punta a meno di
 
 ± ε = ± (E/2) / (D/2)  = ± 2π R / (ND)
 
+<img src="https://cloud.githubusercontent.com/assets/3638098/20029153/43a2dd66-a345-11e6-988c-6cfd462c29e8.jpg" width="500">
+
+
 Allo stato attuale:
 
 N = 20,
@@ -46,6 +49,10 @@ su un arco di ampiezza
 Nelle condizioni ipotizzate, all'interno di questo range la distribuzione è
 proporzionale a quella dello sfasamento tra gli encoder destro e sinistro
 (triangolare).
+
+<img src="https://cloud.githubusercontent.com/assets/3638098/20029191/4079a47a-a346-11e6-9397-e1c3e50a8192.JPG" width="300">
+
+
 
 Potrebbero essere realizzabili degli algoritmi che determinino questo sfasamento
 per apportare correzioni intelligenti, manca comunque la precisione nelle
