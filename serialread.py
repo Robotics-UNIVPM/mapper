@@ -3,7 +3,7 @@
 # 2. Lanciare il programma da terminale con "python serialread.py"
 # 3. Seguire le indicazioni
 #
-# Il nome del file dove salvare va scritto SENZA estensione (viene salvato in .csv)
+# Il nome del file di salvataggio va scritto SENZA estensione (viene salvato in .csv)
 
 import serial, csv, time
 
@@ -35,6 +35,6 @@ while (time.time() - t0) < tempo:
 
 print "Fatto!"
 
-filename = raw_input('Inserisci nome del file: ') + ".csv"
+filename = raw_input('Inserisci nome del file di salvataggio: ') + ".csv"
 writer = csv.writer(open(filename, 'w'))
 writer.writerows(registro)
