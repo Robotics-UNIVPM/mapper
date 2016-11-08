@@ -47,8 +47,3 @@ momento di discussione utile rendere partecipi tutti, come nella spiegazione del
 
 Ditemi se avete idee diverse al riguardo, in questo modo potremmo riscire ad andare per gradi e definire un passo alla volta
 la costruzione del nostro robot.
-                
-                 
-                 
-                
-                   
