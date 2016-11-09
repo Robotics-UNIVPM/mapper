@@ -28,11 +28,10 @@ y = ser.readline() # scarta il primo valore dal buffer
 
 print 'Sto ricevendo i dati..'
 t0 = time.time()
-i = 1
 while (time.time() - t0) < tempo:
-    x = ser.readline()
-    registro.append([i, x[:-2]]) # x[:-2] pulisce i caratteri di newline
-    i += 1
+    x = ser.readline()[:-2] # [:-2] pulisce i caratteri di newline
+    y = x.split(';')
+    registro.append(y)
 
 print "Fatto!"
 
