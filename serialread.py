@@ -1,5 +1,5 @@
 # UTILIZZO:
-# 1. Modificare la variabile "port" a seconda della porta seriale utilizzata
+# 1. Modificare le variabili "port" e "baud" in base alla vostra macchina e Arduino
 # 2. Lanciare il programma da terminale con "python serialread.py"
 # 3. Seguire le indicazioni
 #
@@ -8,6 +8,7 @@
 import serial, csv, time
 
 port = '/dev/ttyACM0'
+baud = 115200
 
 def delay(tempo):
     t0 = time.time()
@@ -20,7 +21,7 @@ tempo = input('Inserisci intervallo di tempo (secondi): ')
 registro = [] # matrice per salvare i dati
 
 ## Inizializzazione porta seriale
-ser = serial.Serial(port)
+ser = serial.Serial(port, baudrate=baud)
 delay(1) # serve per far resettare bene il buffer
 ser.reset_input_buffer()
 y = ser.readline() # scarta il primo valore dal buffer
