@@ -1,6 +1,6 @@
 #Piano di lavoro per lo studio del Sensore a Ultrasuoni [(HC-SR04)](http://www.micropik.com/PDF/HCSR04.pdf)
 
-'**09/11/16**'
+**09/11/16**
 - Download libreria [NewPing](https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home) e studio dei metodi della classe NewPing
 - Verifica della stabilità del sensore (Nel rilevamento)
 - Comportamento per brevi distanze
