@@ -116,4 +116,3 @@ if __name__ == '__main__':
 #	Serial.print(distanza); Serial.print(" "); Serial.print(time); Serial.print("\n");
 #è importante includere \n alla fine per andare a capo in quanto la funzione della libreria serial di python legge l'intera
 #riga e splitta quello che ci trova dentro. Perciò andare a capo divide automaticamente le coppie di dati.
-
