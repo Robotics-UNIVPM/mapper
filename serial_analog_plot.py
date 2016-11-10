@@ -46,7 +46,7 @@ class AnalogPlot:
           print('exiting')
 
       return a0, a1
-
+				
   # clean up
   def close(self):
       # close serial
@@ -94,3 +94,23 @@ def main():
 # call main
 if __name__ == '__main__':
   main()
+
+
+
+#In questo esempio vengono plottati due segnali (per modificare questa funzione bisogna aggiungere il numero di variabili
+#desiderate all'interno della classe e modificare sia i metodi nel quale viene forzato il funzionamento del programma alla
+#sola presenza di due elementi nella lista data, con: assert(len(data) == 2). Di seguito vengono fatti altri controlli simili
+#con strutture condizionali. In più bisogna lavorare con più variabili anche quando viene gestito il plot che attualmente
+#funziona solamente con le variabili a0 e a1. In caso di necessità mi assumo volentieri l'incarico di modificare e testare
+#lo script.
+
+#Per lanciare lo script, da terminale, nella stessa cartella di dove si trova il file eseguire: 
+#	python serial_analog_plot.py --port 'nome della porta seriale'
+#Il nome della porta personalmente varia in base al dispositivo attaccato, generalmente di tratta di /dev/ttyUSB0 o /dev/ttyACM0
+
+
+#Per ricevere in questo modo i dati il file arduino deve anch' esso stampare in seriale due dati che vengono poi splittati dallo
+#script e plottati. Per il sensore ad ultrasuoni ad esempio il programma di gestione è lo stesso ma una volta elaborato il
+#segnale invece che stampare sequenzialmente "distanza", distanza, "cm", dividere opportunamente i due valori da plottare come
+#nell' esempio seguente:
+#	Serial.print(distanza); Serial.print(" "); Serial.print(time); Serial.print("\n");
