@@ -101,7 +101,7 @@ if __name__ == '__main__':
 #desiderate all'interno della classe e modificare sia i metodi nel quale viene forzato il funzionamento del programma alla
 #sola presenza di due elementi nella lista data, con: assert(len(data) == 2). Di seguito vengono fatti altri controlli simili
 #con strutture condizionali. In più bisogna lavorare con più variabili anche quando viene gestito il plot che attualmente
-#funziona solamente con le variabili a0 e a1. In caso di necessità mi assumo volentieri l'incarico di modificare e testare
+#funziona solamente con le variabili a0 e a1). In caso di necessità mi assumo volentieri l'incarico di modificare e testare
 #lo script.
 
 #Per lanciare lo script, da terminale, nella stessa cartella di dove si trova il file eseguire: 
