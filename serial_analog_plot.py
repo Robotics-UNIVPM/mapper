@@ -114,3 +114,5 @@ if __name__ == '__main__':
 #segnale invece che stampare sequenzialmente "distanza", distanza, "cm", dividere opportunamente i due valori da plottare come
 #nell' esempio seguente:
 #	Serial.print(distanza); Serial.print(" "); Serial.print(time); Serial.print("\n");
+#è importante includere \n alla fine per andare a capo in quanto la funzione della libreria serial di python legge l'intera
+#riga e splitta quello che ci trova dentro. Perciò andare a capo divide automaticamente le coppie di dati.
