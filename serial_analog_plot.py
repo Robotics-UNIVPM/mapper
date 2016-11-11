@@ -1,9 +1,11 @@
+# python encoding: latin-1
 import sys, serial, argparse
 import numpy as np
 from time import sleep
 from collections import deque
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+
 
 
 # plot class
@@ -13,7 +15,7 @@ class AnalogPlot:
       # open serial port
       self.ser = serial.Serial(strPort, 9600) #initialize serial port from parameter passed by args
 
-      self.ax = deque([0.0]*maxLen) 
+      self.ax = deque([0.0]*maxLen)
       self.ay = deque([0.0]*maxLen)
       self.maxLen = maxLen
 
@@ -46,7 +48,7 @@ class AnalogPlot:
           print('exiting')
 
       return a0, a1
-				
+
   # clean up
   def close(self):
       # close serial
@@ -104,7 +106,7 @@ if __name__ == '__main__':
 #funziona solamente con le variabili a0 e a1). In caso di necessità mi assumo volentieri l'incarico di modificare e testare
 #lo script.
 
-#Per lanciare lo script, da terminale, nella stessa cartella di dove si trova il file eseguire: 
+#Per lanciare lo script, da terminale, nella stessa cartella di dove si trova il file eseguire:
 #	python serial_analog_plot.py --port 'nome della porta seriale'
 #Il nome della porta personalmente varia in base al dispositivo attaccato, generalmente di tratta di /dev/ttyUSB0 o /dev/ttyACM0
 
