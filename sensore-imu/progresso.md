@@ -13,3 +13,8 @@ Piano di lavoro per lo studio dell'IMU [MPU-9250](https://www.invensense.com/wp-
 - Grafico dei dati su MatLab, possibilmente di tutti i 6 valori simultaneamente
 - Analizzare l'errore di deriva nel tempo
 - Testare in generale come si comporta il modulo (range massimo dei valori assunti, ecc.)
+
+# Idee
+Potrebbe essere utile posizionare il sensore lontano dal centro del robot.
+In questo modo l'accelerometro rileverebbe le accelerazioni centrifughe durante
+le rotazioni, un'informazione utile per filtrare i dati del giroscopio.
