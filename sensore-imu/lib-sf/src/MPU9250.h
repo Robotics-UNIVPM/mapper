@@ -8,7 +8,6 @@
 #ifndef _MPU9250_H_
 #define _MPU9250_H_
 
-#include <SPI.h>
 #include <Wire.h>
 
 // See also MPU-9250 Register Map and Descriptions, Revision 4.0,
@@ -232,7 +231,7 @@ class MPU9250
     float SelfTest[6];
     // Stores the 16-bit signed accelerometer sensor output
     int16_t accelCount[3];
-    
+
   public:
     void getMres();
     void getGres();
