@@ -8,12 +8,27 @@ Piano di lavoro per lo studio dell'IMU [MPU-9250](https://www.invensense.com/wp-
 - Acquisizione dei dati con lo script Python e salvataggio in csv
 
 <br>
+*14/11/16*
+
+- Implementato grafico su MatLab, con la possibilità di vedere più valori contemporaneamente
+- Si è trovata una nuova libreria con dei filtri/calibrazioni interni, è necessario studiarsela per capire bene il funzionamento
+- Da alcuni grafici è risultato che i valori hanno delle oscillazioni, si deve lavorare per cercare di compensarle
+- Si è cominciato a vedere l'integrazione delle accelerazioni per trovare la velocità e lo spazio percorso. Inoltre si è notato che il sensore rileva delle accelerazioni nonostante sia fermo.
+- Il prof ha dato spunti applicativi interessanti, ad esempio si potrebbe simulare un sistema airbag (il quale si aziona se viene rilevata una forte decelerazione)
+
+
+<br>
 **Da fare:**
 
-- Grafico dei dati su MatLab, possibilmente di tutti i 6 valori simultaneamente
 - Analizzare l'errore di deriva nel tempo
 - Testare in generale come si comporta il modulo (range massimo dei valori assunti, ecc.)
+- Risolvere i problemi legati all'integrazione
+- Capire bene come calibrare i dati, il sensore non dovrebbe rilevare accelerazioni se rimane fermo
+- Test applicativi, ad esempio:
+	- Muovere il sensore su un percorso rettilineo e calcolare lo spazio percorso, verificando l'errore effettivo.
+	- Muovere il robot con un pennarello (in modo che tracci la traiettoria) e far fare lo stesso percorso avanti e indietro, oppure fargli fare qualche figura geometrica ripetutamente, in modo da vedere visivamente quanto errore c'è
 
+<br>
 # Idee
 Potrebbe essere utile posizionare il sensore lontano dal centro del robot.
 In questo modo l'accelerometro rileverebbe le accelerazioni centrifughe durante
