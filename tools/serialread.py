@@ -1,3 +1,4 @@
+#python encoding: latin-1
 # UTILIZZO:
 # 1. Modificare le variabili "port" e "baud" in base alla vostra macchina e Arduino
 # 2. Se si vogliono ricevere più dati simultaneamente, su Arduino è necessario
