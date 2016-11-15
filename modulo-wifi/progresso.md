@@ -6,8 +6,11 @@
   - creata una rete wifi con un router, per la connessione con il modulo (per evitare di usare il modulo come AP)
   - configurazione modulo wifi come client con ip: 192.168.10.11
   
+**14/11/16**
+
+  - test comunicazione telnet
+  - invio e ricezione stringhe e singoli caratteri funzionante
+  
 Da fare:
-  - test comunicazione con telnet
-  - test comunicazione con console integrata nel firmware
-  - rimuovere il timout di 5 minuti previsto dal firmware
-  - testare e scegliere il modo migliore per l'invio dei dati (frasi o singoli caratteri)
+  - stress test esp
+  - stress test seriale
