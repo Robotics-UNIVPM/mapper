@@ -61,3 +61,10 @@ parti meccaniche sopratutto per i kit di basso costo attualmente utilizzati.
 Per ora sembra essenziale utlizzare un altro sistema, il candidato più valido è
 un IMU con magnetometro, per avere come riferimento assoluto il campo magnetico
 terrestre.
+
+Un'altra conclusione che si può trarre è che si ha maggiore precisione (e quindi controllo)
+sulla direzione del veicolo se le ruote sono più distanti fra loro. 
+A questo si aggiungerebbe la teorica precisione maggiore derivante da ruote più piccole 
+(anche sulla distanza lineare) se non fosse che ruote più piccole sono più sensibili a
+disturbi fisici e imperfezioni nel pavimento e rendono meno adatta l'approssimazione
+del rotolamento perfetto.
