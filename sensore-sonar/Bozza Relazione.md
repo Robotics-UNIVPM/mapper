@@ -1,11 +1,15 @@
 #**RELAZIONE SENSORE ULTRASUONI HC-SR04**
 
 ***SCOPO***: 
+
 Lo scopo della prova è valutare le performance fornite dal sensore, in diverse situazioni, in modo da misurarne l'affidabilità, stabilità e la sua effettiva applicabilità.
 
-***SCHEMA ELETTRICO***: eventuale
+***SCHEMA ELETTRICO***: 
+
+eventuale
 
 ***SOFTWARE***:
+
 Gli sketch su GitHub vengono vengono allegati con il link ai diversi documenti:
 - [Performance Libreria NewPing](https://github.com/Robotics-UNIVPM/mapper/blob/hc-sr04/sensore-sonar/performance_newPing.ino)
 - [Angolo di Indcidenza con Servo Motore](https://github.com/Robotics-UNIVPM/mapper/blob/hc-sr04/sensore-sonar/sonar_servo.ino)
@@ -36,10 +40,12 @@ Per avere un'effettiva verifica si è cominciato il rilevamento utilizzando un d
 Potrei dire una bugia e dire che funziona bene, ma non abbiamo provato e non lo so. Funziona bene su tutto quello su cui abbiamo provato, da pezzi di plastica fino a tessuto, ma la prova ha un senso per materiali fonoassorbenti che non avevamo. Sarà da provare appena possibile e cambiare questa parte(Stay tuned xoxo)
 
 ***RISULTATI***:
+
 Adesso sono un pò stanco di scrivere, questi li carico stasera, con i link ai csv che metterò su github
 
 
 ***CONCLUSIONI***:
+
 In conclusione si può dire che il sensore, sottoposto a diverse prove, ha mostrato un comportamento abbastanza soddisfacente nella maggior parte dei casi.
 Per quanto riguarda la sua stabilità si può sicuramente fare affidamento sul funzionamento per brevi e medie distanze, in corrispondenza ad un funzionamento statico, cioè tale per cui l'onda emessa dal sensore possa essere ricevuta dallo stesso. Ciò paradossalmente significa che il sensore non deve compiere significativi spostamenti in un intervallo di tempo di qualche microsecondo, utili perchè il ping torni e venga elaborato. 
 Una cosa su cui risulta si possa fare affidameto dalle prove effettuate è che il sensore riesce ad essere indipendente anche se la configurazione di montaggio prevede più moduli montati insieme. Su questa caratteristica bisogna focalizzare molta attenzione in quanto l'utilizzo di un solo sensore non può fornire una soluzione valida per il controllo della distanza di un corpo in movimento. Infatti il modulo emettendo un segnale di apertura conica di 15 gradi non può fornire una chiara visione di quello che è l' ambiente circostante. A questo riguardo si consiglia l'utilizzo di più moduli per avere una visione più ampia. Questa caratteristica diventa di fondamentale importanza quando si considera che per alcune inclinazioni il sensore non riesce più a fornire delle buone performance, rischiando che la distanza rilevata non sia reale,  non riuscendo a rilevare un ostacolo posto anche difronte. Con l'utilizzo di più sensori posti in una certa configurazione si può ovviare a questa problematica, rilevando gli ostacoli da direzione diverse, evitando così la presenza di un maggior numero di ostacoli.
