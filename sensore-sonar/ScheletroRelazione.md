@@ -1,28 +1,47 @@
+#**RELAZIONE SENSORE ULTRASUONI HC-SR04**
 
-[scheletro] RELAZIONE SENSORE ULTRASUONI HC-SR04
+***SCOPO***: 
+Lo scopo della prova è valutare le performance fornite dal sensore, in diverse situazioni, in modo da misurarne l'affidabilità, stabilità e la sua effettiva applicabilità.
 
-SCOPO: Dedurre tramite vari test il comportamento del sensore, la sua stabilità sia se usato singolarmente che in parallelo ad altri.
+***SCHEMA ELETTRICO***: eventuale
 
-SCHEMA ELETTRICO: eventuale
+***SOFTWARE***:
+Gli sketch su GitHub vengono vengono allegati con il link ai diversi documenti:
+- [Performance Libreria NewPing](https://github.com/Robotics-UNIVPM/mapper/blob/hc-sr04/sensore-sonar/performance_newPing.ino)
+- [Angolo di Indcidenza con Servo Motore](https://github.com/Robotics-UNIVPM/mapper/blob/hc-sr04/sensore-sonar/sonar_servo.ino)
+- [Tre Sensori in Parallelo](https://github.com/Robotics-UNIVPM/mapper/blob/hc-sr04/sensore-sonar/parallel_sonar.ino)
 
-SOFTWARE PER I TEST:
-- Sketches Arduino
+***PROCEDIMENTO***:
 
-PROCEDIMENTO: esperimenti svolti:
-- Libreria NewPing e performance dei metodi inclusi nei vari esperimenti
-- Brevi distanze
-- Lunghe distanze
-- Angolo di incidenza (nelle due direzioni)
-- Comportamento per diversi materiali
-- Interferenza tra più sensori in parallelo
+*Performance NewPing:*
+La prova della libreria è stata effettuata congiuntamente alla prova della stabilità su brevi e lunghe distanze. Infatti sono stati provati i metodi offerti dalla libreria, misurando le distanze da ostacoli a distanza variabile. I metodi messi a disposizione sono molteplici, e in ogni caso, restituiscono due valori: distanza e tempo di ritorno del ping. Nel primo caso la distanza può essere restituita in centimetri o in pollici, mentre il tempo può essere restituito in millisecondo o in microsecondi. 
+Per le necessità legate all'utilizzo del modulo, il valore di interesse era quello della distanza, e in quanto tale è stata usata la funzione *convert_cm()* che restituisce appunto tale valore. Come soluzione si era anche provata la conversione del valore di tempo fornito dalla funzione *ping()* nella distanza in centimetri con la funzione *convert_cm()* concatenando le due, ma si è rivelata un' operazione ininfluente, non ottenendo un miglioramento della stabilità, in quanto questa operazione viene già realizzata internamente alla funzione *convert_cm()*.
+Si è tenuta in considerazione anche la funzione *ping_median(iterations)* che in automatico fornisce la media di una serie di ping inviati (cinque di default). Per prove così statiche però non è stata avvertita una notevole differenza tra l'utilizzo di questo metodo e il più classico metodo di calcolo della distanza, per questo motivo si è deciso di utilizzare nelle prove semplicemente la funzione *convert_cm()*. Non si esclude che possa essere rilevata una miglioria nella valutazione di una media dei segnali. Un approfondimento può essere effettuato una volta che il sensore viene montato su una macchina in movimento.
+Per quanto riguarda la stabilità del sensore, la prova è stato effettuata ponendo l'ostacolo da distanza nulla fino ad un massimo di due metri e mezzo. Per questioni di spazio non si è andati oltre, consci del fatto che non vi è necessità di valutare tali distanze di tale portata e superiori. Ad ogni modo in questo range già piuttosto esteso i valori vengono rilevati in modo costante senza eccessivi sbalzi. La misura di questo è stata effettuata tramite la lettura del monitor seriale e l'utilizzo di uno script realizzato in python che fornisce in tempo reale il valore analogico misurato dal modulo. Come si può vedere dallo sketch allegato, è stato utilizzato il delay presentato nell'esempio di default, di cinquanta millisecondi, anche se viene scritto che questo può essere diminuito fino ad un minimo di 29 millisecondi. Una prova effettuata senza delay in realtà non ha riscontrato variazione nel rilevamento della distanza, ma si conviene che il funzionamento ottimale avvenga con un certo delay tra una misura e l' altra.
 
-RISULTATI:
-- Files CSV contenenti statistiche performance del sensore in varie prove
-- Plot dati rilevati
-- calcoli relativi
+*Angolo di Indcidenza con Servo Motore:*
+La problematica maggiore, trattata nella prova del modulo ultrasuoni, è sicuramente quella della misura delle distanze effettuata su superfici non perpendicolari al segnale ultrasuoni inviato dal sensore, sia verticalmente che orizzontalmente. Per la verifica si è pensato di utilizzare un semplice apparato sperimentale costituito, da una parte, dal sensore ultrasuoni montato su una breadbord in modo da mantenerlo stabile e, dall'altra, all' utilizzo di un servo motore, sul cui asse è stata fissata una tessera di plastica, della grandezza di una carta di credito, il tutto fissato sulla superficie laterale di un tavolo. Quindi i due sistemi sono stati posti l'uno di fronte all'altro e azionati contemporaneamente dallo sketch allegato nella sezione *Software*. La superficie ridotta della carta non ha consentito lo svolgimento della prova su distanze superiori ad una decina di centimetri, questo implica che le misurazioni effettuate possono peggiorare con l' aumento della distanza dell' ostacolo. Questa supposizione è maturata in seguito alla bassa stabilità dimostrata in questa prova dal sensore. Il ping emesso dal modulo è un' onda di forma conica che rimbalza sull'ostacolo e ritorna al sensore sotto forma di un'altra onda conica, con origine nel punto di incidenza. Perciò, ad un aumento della distanza, corrisponde un aumento del raggio del cono e, di conseguenza, una maggior dispersione del segnale. La prova è svolta per verificare qual è il grado di inclinazione massimo per il quale il sensore riesce a rilevare ancora la distanza reale dell' ostacolo. Superata questa soglia la distanza è rilevata come un valore molto ampio o addirittura il ping di ritorno non è nemmeno rilevato dal sensore. Questo accade perche l'onda è letteralmente deviata dalla superficie su cui rimbalza e, non ripercorrendo la traiettoria emettitore-ricevitore, il sensore non riesce ad effettuate una misura, per lo meno precisa, della distanza dell' ostacolo. L' apertura conica dell'onda emessa dall'ultrasioni è di 15 gradi.
+Per poter avere una misura precisa della distanza in corrispondenza di ogni angolo di rotazione della tessera, ci si è serviti di un'altro script in python il quale, passatogli un certo intervallo di tempo, scrive su un file csv quanto letto sulla porta seriale. In questo modo in corrispondenza dell' angolo è stata segnata la distanza rilevata, in modo da poter effettuare un' analisi a posteriori.
+Perciò la tessera è stata fatta girare, un grado per volta, intervallando l'azionamento con un delay, in modo da avere una misura della distanza stabile, corrispondente ad ogni angolo. L' inclinazione massima, regolata da software, è stata di 50 gradi, ed una volta raggiunto l'angolo la posizione dell'asse era riportata a quella iniziale, quindi la tessera era posta perpendicolare. Per questo motivo l'intervallo di tempo di raccolta dei dati fornita allo script è stato di trenta secondo, in modo che esso potesse poplare il file csv con i dati di quasi due interi cicli di rotazione.
+La relativa precisione del sistema di misura ha portato ad avere valori un po' sfalsati, ma indicativamente buoni per avere un'idea delle performance fornite dal sensore in funzione dell' angolo di incidenza. Questa instabilità nei dati raccolti non consente di ricavare una relazione matematica tra la distanza e l'angolo di incidenza. 
+Con un'analisi dei dati raccolti risulta che sia orizzontalmente che verticalmente l'angolo massimo, per il quale il sensore riesce a fornire stabilmente una misura della distanza, è compreso tra i 25 e i 30 gradi, tendende a questo limite superiore. Oltre i trenta gradi il modulo non è in grado di fornire una misura realistica della distanza, ma anzi si stabilizza su misure molto maggiori. La istanza rilevata aumenta leggermente con l'aumentare dell'angolo di inclinazione, come è logico pensare.
+I valori rilevati saranno forniti sotto forma di tabelle nell'appostia sezione.
+
+*Tre Sensori in Parallelo:*
+La prova è stata effettuata utilizzando tre sensori ad ultrasuoni posti in parallelo su una breadboard, posti difronte ad un ostacolo, abbastanza ampio da riuscire a ricevere tutti e tre i segnali. A questo punto la prova non ha avuto un procedimento troppo diverso da quello della valutazione della stabilità per brevi e lunghe distanze. I dati sono stati verificati allo stesso modo, con la differenza che questa volta la lettura comprendeva tre valori. Si è valutata la stabilità dei sensori in funzione della variazione della distanza dell'ostacolo, ponendo particolare attenzione a possibili fenomeni di interferenza tra i sensori dovuti al rilevamento delle onde emesse dagli altri moduli. 
+Per avere un'effettiva verifica si è cominciato il rilevamento utilizzando un delay tra il ping di un sensore e quello del successivo. Continuando in questo modo, diminuendo man mano il delay, si è arrivati ad escluderlo totalmente, rilevando che anche in questo caso l'interferenza tra sensori era nulla. A conferma di ciò sono stati posti anche ostacoli a distanze variabili per ogni sensore, ed anche in questo caso la distanza rilevata non è stata influenzata in alcun modo da quelle dei moduli adiacenti.
 
 
-CONCLUSIONI:
-- Stabilità del sensore
-- Interferenza tra più sensori
-- Angoli ideali di funzionamento
+*Comportamento per diversi materiali:*
+Potrei dire una bugia e dire che funziona bene, ma non abbiamo provato e non lo so. Funziona bene su tutto quello su cui abbiamo provato, da pezzi di plastica fino a tessuto, ma la prova ha un senso per materiali fonoassorbenti che non avevamo. Sarà da provare appena possibile e cambiare questa parte(Stay tuned xoxo)
+
+***RISULTATI***:
+Adesso sono un pò stanco di scrivere, questi li carico stasera, con i link ai csv che metterò su github
+
+
+***CONCLUSIONI***:
+In conclusione si può dire che il sensore, sottoposto a diverse prove, ha mostrato un comportamento abbastanza soddisfacente nella maggior parte dei casi.
+Per quanto riguarda la sua stabilità si può sicuramente fare affidamento sul funzionamento per brevi e medie distanze, in corrispondenza ad un funzionamento statico, cioè tale per cui l'onda emessa dal sensore possa essere ricevuta dallo stesso. Ciò paradossalmente significa che il sensore non deve compiere significativi spostamenti in un intervallo di tempo di qualche microsecondo, utili perchè il ping torni e venga elaborato. 
+Una cosa su cui risulta si possa fare affidameto dalle prove effettuate è che il sensore riesce ad essere indipendente anche se la configurazione di montaggio prevede più moduli montati insieme. Su questa caratteristica bisogna focalizzare molta attenzione in quanto l'utilizzo di un solo sensore non può fornire una soluzione valida per il controllo della distanza di un corpo in movimento. Infatti il modulo emettendo un segnale di apertura conica di 15 gradi non può fornire una chiara visione di quello che è l' ambiente circostante. A questo riguardo si consiglia l'utilizzo di più moduli per avere una visione più ampia. Questa caratteristica diventa di fondamentale importanza quando si considera che per alcune inclinazioni il sensore non riesce più a fornire delle buone performance, rischiando che la distanza rilevata non sia reale,  non riuscendo a rilevare un ostacolo posto anche difronte. Con l'utilizzo di più sensori posti in una certa configurazione si può ovviare a questa problematica, rilevando gli ostacoli da direzione diverse, evitando così la presenza di un maggior numero di ostacoli.
+Sarà da concludere qualcosa a proposito delle superfici fonoassorbenti.
+
