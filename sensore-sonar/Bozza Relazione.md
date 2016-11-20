@@ -41,7 +41,8 @@ Per avere un'effettiva verifica si è cominciato il rilevamento utilizzando un d
 
 ***RISULTATI***:
 
-Adesso sono un pò stanco di scrivere, questi li carico stasera, con i link ai csv che metterò su github
+Il documento comprensivo delle misurazioni raccolto in tutte le prove è allegato come segue:
+<br> [Misure Prove Effettuate](https://github.com/Robotics-UNIVPM/mapper/blob/relazione-hcsr04/sensore-sonar/Comprensivo_prove.csv)
 
 
 ***CONCLUSIONI***:
