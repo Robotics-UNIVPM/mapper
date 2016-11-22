@@ -185,30 +185,30 @@ void loop()
 
 
     myIMU.delt_t = millis() - myIMU.count;
-    if (myIMU.delt_t > 500)
-    {/*
-      Serial.print(millis());
+    if (myIMU.delt_t > 50)
+    {
+      Serial.print(millis()); // millisec
       Serial.print(';');
-      Serial.print(1000*myIMU.ax);
+      Serial.print(1000*myIMU.ax); // milli g
       Serial.print(';');
       Serial.print(1000*myIMU.ay);
       Serial.print(';');
       Serial.print(1000*myIMU.az);
       Serial.print(';');
-      Serial.print(myIMU.gx, 3);
+      Serial.print(myIMU.gx, 3); // degrees/seconds
       Serial.print(';');
       Serial.print(myIMU.gy, 3);
       Serial.print(';');
       Serial.print(myIMU.gz, 3);
       Serial.print(';');
-      Serial.print(myIMU.mx);
+      Serial.print(myIMU.mx); // milligauss
       Serial.print(';');
       Serial.print(myIMU.my);
       Serial.print(';');
-      Serial.println(myIMU.mz);*/
+      Serial.println(myIMU.mz);
 
       float g = myIMU.ax*myIMU.ax+myIMU.ay*myIMU.ay+myIMU.az*myIMU.az;
-      Serial.println(g);
+      //Serial.println(g);
 
       if(SerialDebug)
       {

@@ -7,14 +7,14 @@ M = csvread(filename);
 
 %% Separo i dati
 t = M(:, 1)/1000 ;          % secondi
-t = t - t(1,1);             % tolgo t0 a tutti valori, così si parte dall'istante 0
-AccX = M(:, 2)*9.81/1000;   % metri al secondo quadrato
+t = t - t(1,1); % tolgo t0 a tutti valori, così si parte dall'istante 0
+AccX = M(:, 2)*9.81/1000; % metri al secondo quadrato
 AccY = M(:, 3)*9.81/1000;
 AccZ = M(:, 4)*9.81/1000;
-GirX = M(:, 5);             % gradi al secondo
+GirX = M(:, 5); % gradi al secondo
 GirY = M(:, 6);
 GirZ = M(:, 7);
-MagX = M(:, 8);             % milliGauss
+MagX = M(:, 8); % milliGauss
 MagY = M(:, 9);
 MagZ = M(:, 10);
 
@@ -32,7 +32,6 @@ MagZ = M(:, 10);
 % plot(t, MagY)
 % plot(t, MagZ)
 % plot(t, MagX, t, MagY, t, MagZ)
-
 
 %% Calcolo velocità e spostamento, valori LONTANI dalla realtà
 % Vettore dei delta_t
