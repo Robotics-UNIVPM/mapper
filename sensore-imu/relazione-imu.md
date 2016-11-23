@@ -34,15 +34,15 @@ Il sensore MPU 9250 presenta al suo interno una DMP (Digital Motion Processor) c
 
 
 ####Grafici
-(In [questa](https://github.com/Robotics-UNIVPM/mapper/tree/MPU/sensore-imu/Script%20Matlab) cartella si trovano i dati e lo script Matlab utilizzato per elaborarli)
+(In [questa](./Script%20Matlab) cartella si trovano i dati e lo script Matlab utilizzato per elaborarli)
 <br>Il sensore è rimasto fermo per 5 minuti. Da questi grafici si può apprezzare che il sensore non ha qualche errore di deriva nel tempo, e che i valori dell'accelerometro e del giroscopio oscillano in un intervallo d'errore piuttosto ridotto.
 <br>
-<img src="https://github.com/Robotics-UNIVPM/mapper/blob/MPU/sensore-imu/Grafici/acc3axes.png" width="400">
-<img src="https://github.com/Robotics-UNIVPM/mapper/blob/MPU/sensore-imu/Grafici/accX.png" width="400">
-<img src="https://github.com/Robotics-UNIVPM/mapper/blob/MPU/sensore-imu/Grafici/gyr3axes.png" width="400">
+<img src="./Grafici/acc3axes.png" width="400">
+<img src="./Grafici/accX.png" width="400">
+<img src="./Grafici/gyr3axes.png" width="400">
 <br><br>
 Qui sotto viene mostrato lo spostamento, calcolato integrando due volte le accelerazioni. E' evidente che il risultato è lontano dalla realtà, secondo questi dati il sensore si sarebbe spostato di 170 metri in 5 minuti!
-<img src="https://github.com/Robotics-UNIVPM/mapper/blob/MPU/sensore-imu/Grafici/distance.png" width="400">
+<img src="./Grafici/distance.png" width="400">
 
 <br>
 ###Conclusioni
