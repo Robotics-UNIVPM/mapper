@@ -26,7 +26,7 @@ Per riuscire a gestire i dati dell’IMU in modo efficace si possono utilizzare 
 
 <br>
 ###MPU 9250
-Durante i nostri esperimenti è stato utilizzato il sensore MPU 9250 prodotto dalla InvenSense, il quale prevede anche il magnetometro; tuttavia, per i nostri scopi progettuali è sconsigliato il suo uso, considerando le problematiche qui sopra esposte.
+Durante i nostri esperimenti è stato utilizzato il sensore MPU 9250 prodotto dalla InvenSense, il quale prevede anche il magnetometro; tuttavia, per i nostri scopi progettuali è sconsigliato l'uso di quest'ultimo, considerando le problematiche qui sopra esposte.
 
 Il sensore MPU 9250 presenta al suo interno una DMP (Digital Motion Processor) che filtra automaticamente i dati provenienti da accelerometro e giroscopio.
 <br>Grazie a una libreria che fa uso della DMP, siamo riusciti ad ottenere risultati accettabili per Yaw, Pitch e Roll (imbardata, beccheggio, rollio; sono gli angoli di orientazione rispetto a Z, Y, X).
@@ -34,8 +34,8 @@ Il sensore MPU 9250 presenta al suo interno una DMP (Digital Motion Processor) c
 
 
 ####Grafici
-(In [questa](./Script%20Matlab) cartella si trovano i dati e lo script Matlab utilizzato per elaborarli)
-<br>Il sensore è rimasto fermo per 5 minuti. Da questi grafici si può apprezzare che il sensore non ha qualche errore di deriva nel tempo, e che i valori dell'accelerometro e del giroscopio oscillano in un intervallo d'errore piuttosto ridotto.
+(In [questa cartella](./Script%20Matlab) si trovano i dati e lo script Matlab utilizzato per elaborarli; [questo](./MPU9250BasicAHRS001/MPU9250BasicAHRS001.ino) è il codice Arduino)
+<br>Il sensore è rimasto fermo per 5 minuti, e si sono salvati i dati grezzi (senza DMP) che ha rilevato il sensore. Da questi grafici si può apprezzare che il sensore non ha qualche errore di deriva nel tempo, e che i valori dell'accelerometro e del giroscopio oscillano in un intervallo d'errore piuttosto ridotto.
 <br>
 <img src="./Grafici/acc3axes.png" width="400">
 <img src="./Grafici/accX.png" width="400">
