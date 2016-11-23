@@ -30,7 +30,7 @@ Durante i nostri esperimenti è stato utilizzato il sensore MPU 9250 prodotto da
 
 Il sensore MPU 9250 presenta al suo interno una DMP (Digital Motion Processor) che filtra automaticamente i dati provenienti da accelerometro e giroscopio.
 <br>Grazie a una libreria che fa uso della DMP, siamo riusciti ad ottenere risultati accettabili per Yaw, Pitch e Roll (imbardata, beccheggio, rollio; sono gli angoli di orientazione rispetto a Z, Y, X).
-<br>Il dato più interessante per un robot mobile è lo Yaw, visto che indica la direzione verso cui si sta puntando, e purtroppo si è rilevato quello più “sporco”; questo succede perché gli assi X e Y hanno sempre come riferimento l’accelerazione gravitazionale che punta verso il basso, mentre l’asse Z, da cui deriva lo Yaw, non ha un riferimento, infatti il valore della Yaw è instabile soprattutto quando l’IMU rimane ferma.
+<br>Il dato più interessante per un robot mobile è lo Yaw, visto che indica la direzione verso cui si sta puntando, e purtroppo si è rilevato essere quello più “sporco”; questo succede perché gli assi X e Y hanno sempre come riferimento l’accelerazione gravitazionale che punta verso il basso, mentre l’asse Z, da cui deriva lo Yaw, non ha un riferimento, infatti il valore dello Yaw è instabile soprattutto quando l’IMU rimane ferma.
 
 
 ####Grafici
