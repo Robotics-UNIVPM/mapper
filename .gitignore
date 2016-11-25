@@ -1,3 +1,4 @@
+.gitignore
 
 *.bin
 
@@ -8,3 +9,7 @@
 *.a
 
 */.pioenvs/*
+
+mapper-personal/
+
+
