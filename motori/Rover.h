@@ -1,9 +1,6 @@
-#ifndef __ROVER__
-#define __ROVER__
-
-#include <Arduino.h>
-
 /*
+  API:
+
 Crea un'istanza di Rover
   Rover rov(3,9,10,11);
 
@@ -16,71 +13,88 @@ Negativi per la retromarcia.
 Se l ed r sono interi, vengono usati come valore da scrivere sul pwm
 Se l ed r sono float, saranno il valore in frazione sulla potenza massima (|1|)
 
-  rov.drive()     equivale a      rov.drive(1.0, 1.0)
-  rov.stop()      è ovvio
-  
-  rov.pause() ferma i motori e memorizza lo stato precendete, per riprenderlo:
-  rov.resume()
+Per comodità ci sono anche:
+  rov.drive()     che equivale a      rov.drive(1.0, 1.0)
+  rov.stop()      che equivale a      rov.drive(0,0)
 
 */
 
+#ifndef _ROVER_H_
+#define _ROVER_H_
+
+#include <Arduino.h>
+
 class Rover{
+public:
+  //Contructor, takes pins as arguments
+  Rover(int fwdLeftPin, int fwdRightPin, int revLeftPin, int revRightPin);
 
-  int fl_, fr_, rl_, rr_; //pins
-  int L_, R_; //duty cycles stored for pausing and resuming
+  // Control motors with signed pwm values. Sign indicates direction.
+  // Default arguments to drive forward with maximum power.
+  // WARNING: different MCUs will give different results
+  void drive(int leftPWM=PWMRANGE, int rightPWM=PWMRANGE);
 
-  public:
+  // Control motors with signed duty cycle.   Sign indicates direction.
+  // Values should be in range [-1.0, 1.0].   Platform independent!
+  void drive(float leftDutyCycle, float rightDutyCycle);
 
-  Rover(int fl, int fr, int rl, int rr):
-  fl_(fl), fr_(fr), rl_(rl), rr_(rr) {
-    pinMode(fl_, OUTPUT);
-    analogWrite(fl_, LOW);
-    pinMode(fr_, OUTPUT);
-    analogWrite(fr_, LOW);
-    pinMode(rl_, OUTPUT);
-    analogWrite(rl_, LOW);
-    pinMode(rr_, OUTPUT);
-    analogWrite(rr_, LOW);
-  }
+  void stop(); //shorthand for drive(0,0)
 
-  void drive(int L=PWMRANGE, int R=PWMRANGE){
-    if (L<0) {
-      analogWrite(fl_, LOW);
-      analogWrite(rl_, -L);
-    } else {
-      analogWrite(rl_, LOW);
-      analogWrite(fl_, L);
-    }
-    if (R<0) {
-      analogWrite(fr_, LOW);
-      analogWrite(rr_, -R);
-    } else {
-      analogWrite(rr_, LOW);
-      analogWrite(fr_, R);
-    }
-    L_=L;
-    R_=R;
-  }
-
-  void drive(float L=1, float R=1){
-    drive((int)L/PWMRANGE,(int)R/PWMRANGE);
-  }
-
-  void stop(){
-    drive(0,0);
-  }
-
-  void pause(){
-    analogWrite(fl_, 0);
-    analogWrite(fr_, 0);
-    analogWrite(rl_, 0);
-    analogWrite(rr_, 0);
-  }
-
-  void resume(){
-    drive(L_, R_);
-  }
+private:
+  //Pins connected to H-Bridge
+  const int forwardLeftPin_, forwardRightPin_,
+            reverseLeftPin_, reverseRightPin_;
 };
 
+
+//============================================================================//
+//================IMPLEMENTATION==============================================//
+
+Rover::Rover(int fl, int fr, int rl, int rr):
+  forwardLeftPin_(fl), forwardRightPin_(fr),
+  reverseLeftPin_(rl), reverseRightPin_(rr) {
+  //Initialize all pins for output
+  pinMode(forwardLeftPin_,  OUTPUT);
+  pinMode(forwardRightPin_, OUTPUT);
+  pinMode(reverseLeftPin_,  OUTPUT);
+  pinMode(reverseRightPin_, OUTPUT);
+  //Set all pins LOW just to be sure
+  analogWrite(forwardLeftPin_,  0);
+  analogWrite(forwardRightPin_, 0);
+  analogWrite(reverseLeftPin_,  0);
+  analogWrite(reverseRightPin_, 0);
+}
+
+// PWMRANGE is the maximum PWM value you can give to your hardware. This is
+// #defined in Arduino Framework, using this constant makes this code
+// platform independent.
+void Rover::drive(int leftPWM, int rightPWM){
+  // Control left motor:
+  if (leftPWM<0) {
+    analogWrite(forwardLeftPin_, 0);
+    analogWrite(reverseLeftPin_, -leftPWM);
+  }  else {
+    analogWrite(reverseLeftPin_, 0);
+    analogWrite(forwardLeftPin_, leftPWM);
+  }
+
+  //Control right motor:
+  if (rightPWM<0) {
+    analogWrite(forwardRightPin_, 0);
+    analogWrite(reverseRightPin_, -rightPWM);
+  } else {
+    analogWrite(reverseRightPin_, 0);
+    analogWrite(forwardRightPin_, rightPWM);
+  }
+}
+
+void Rover::drive(float leftDutyCycle, float rightDutyCycle){
+  // convert duty cycles to integer pwm values and pass to drive(int,int)
+  drive((int)leftDutyCycle/PWMRANGE, (int)rightDutyCycle/PWMRANGE);
+}
+
+void Rover::stop(){
+  drive(0,0);
+}
 
 #endif
