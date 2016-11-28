@@ -9,16 +9,8 @@
 
 */.pioenvs/*
 
-*.fdb_latexmk
+cinematica/.latex/*
 
-*.json
+.latex.json
 
-*.aux
-
-*.fls
-
-*.log
-
-*.gz
-
-.latex/cinematica.pdf
+cinematica.synctex.gz
