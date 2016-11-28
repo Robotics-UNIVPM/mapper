@@ -8,3 +8,17 @@
 *.a
 
 */.pioenvs/*
+
+*.fdb_latexmk
+
+*.json
+
+*.aux
+
+*.fls
+
+*.log
+
+*.gz
+
+.latex/cinematica.pdf
