@@ -22,6 +22,7 @@ Per comodità ci sono anche:
 #ifndef _ROVER_H_
 #define _ROVER_H_
 
+#define PWMRANGE = 255;
 #include <Arduino.h>
 
 class Rover{
