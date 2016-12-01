@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc} %per i caratteri accentati
+\usepackage{mathtools}
+
+\begin{document}
+
+\noindent
+Siano $l(t)$, $r(t)$ le distanze registrate fino al tempo $t$ sulle
+ruote motrici sinistra e destra rispettivamente (left e right). Se $L$ è la
+distanza tra le ruote, l'imbardata, in radianti, cioè l'angolo tra l'asse x e
+la direzione in cui punta il robot, è
+
+\begin{equation}
+	\theta (t) = \theta_0 + \frac{r(t)-l(t)}{L},
+\end{equation}
+
+\noindent
+quindi il versore della traiettoria è
+
+\begin{equation}
+	\hat{v} (t) = \begin{bmatrix} cos\theta (t) \\ sin\theta (t) \end{bmatrix}.
+\end{equation}
+
+\noindent
+Inoltre la velocità è la media delle velocità registrate
+
+\begin{equation}
+	v(t)=||v(t)||\hat{v}(t) = \frac{r'(t)+l'(t)}{2}\begin{bmatrix}cos\theta (t) \\
+	sin\theta (t) \end{bmatrix}.
+\end{equation}
+
+\noindent
+Da cui la traiettoria:
+
+\begin{equation}
+	\begin{bmatrix}x(t)\\ y(t) \end{bmatrix} = \begin{bmatrix}x_0 \\ y_0
+	\end{bmatrix} +\int_0^t v(\tau )d\tau = \begin{bmatrix}x_0 + \int_0^t
+	\frac{r'(t)+l'(t)}{2} cos(\theta_0 + \frac{r(t)-l(t)}{L})d\tau \\ y_0 +
+	\int_0^t \frac{r'(t)+l'(t)}{2} sin(\theta_0 + \frac{r(t)-l(t)}{L})d\tau
+	\end{bmatrix}.
+\end{equation}
+
+\end{document}

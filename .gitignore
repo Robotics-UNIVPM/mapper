@@ -8,3 +8,9 @@
 *.a
 
 */.pioenvs/*
+
+cinematica/.latex/*
+
+.latex.json
+
+cinematica.synctex.gz
