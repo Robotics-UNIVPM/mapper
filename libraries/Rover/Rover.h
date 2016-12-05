@@ -22,7 +22,8 @@ Per comodità ci sono anche:
 #ifndef _ROVER_H_
 #define _ROVER_H_
 
-#define PWMRANGE 255;
+// PWMRANGE is the resolution of your mcu's PWMs.
+#define PWMRANGE 255
 #include <Arduino.h>
 
 class Rover{
@@ -37,7 +38,7 @@ public:
 
   // Control motors with signed duty cycle.   Sign indicates direction.
   // Values should be in range [-1.0, 1.0].   Platform independent!
-  void drive(float leftDutyCycle, float rightDutyCycle);
+  void drive(double leftDutyCycle, double rightDutyCycle);
 
   void stop(); //shorthand for drive(0,0)
 
@@ -66,9 +67,6 @@ Rover::Rover(int fl, int fr, int rl, int rr):
   analogWrite(reverseRightPin_, 0);
 }
 
-// PWMRANGE is the maximum PWM value you can give to your hardware. This is
-// #defined in Arduino Framework, using this constant makes this code
-// platform independent.
 void Rover::drive(int leftPWM, int rightPWM){
   // Control left motor:
   if (leftPWM<0) {
@@ -89,9 +87,9 @@ void Rover::drive(int leftPWM, int rightPWM){
   }
 }
 
-void Rover::drive(float leftDutyCycle, float rightDutyCycle){
+void Rover::drive(double leftDutyCycle, double rightDutyCycle){
   // convert duty cycles to integer pwm values and pass to drive(int,int)
-  drive((int)leftDutyCycle/PWMRANGE, (int)rightDutyCycle/PWMRANGE);
+  drive((int)leftDutyCycle*PWMRANGE, (int)rightDutyCycle*PWMRANGE);
 }
 
 void Rover::stop(){
