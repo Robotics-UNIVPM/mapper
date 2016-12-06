@@ -19,6 +19,9 @@ nel rilevamento è 30°. I dati sono stati trattati e si dispone di una dozzina 
 Manca:
 - Prove su diverse superfici (mancanza di materiale). Sarebbe interessante fare una prova con una scatola di uova per vedere quanto l' ultrasuono viene riflesso, la risposta del sensore, e quanto viene invece assorbito. Essendo una prova marginale verrà svolta in separata sede come prova aggiuntiva.
 
+**16/11/16**
+-Si è discusso della stesura della relazione, e fatta una bozza del suo scheletro, come parte conclusiva delle prove legate a questo modulo
+
 La pagina [ElettronicaOpenSource/Sonar](http://it.emcelettronica.com/realizzazione-di-un-rilevatore-sonar-con-arduino) contiene informazioni che potranno risultare utili nello studio delle caratteristiche di questo modulo.
 
 Sono state provate tutte le diverse soluzioni riguardanti il modulo e le sue problematiche. Il gruppo si appresta a comporre la relazione riassuntiva.
