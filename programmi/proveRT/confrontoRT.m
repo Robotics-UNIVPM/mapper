@@ -1,10 +1,11 @@
-n = 20000; %numero di campioni da prendere
+n = 2000; %numero di campioni da prendere
 
 ID = 255;
 id = 0;
 
-piano = animatedline('Color','r');
-badpiano = animatedline('Color','b');
+piano    = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
+badpiano = animatedline('MarkerSize', 2, 'MarkerEdgeColor','g', 'Marker', 'o');
+
 arduino = tcpclient('192.168.0.33', 23);
 
 D = 8.2; % diametro ruota, [cm]
@@ -47,6 +48,10 @@ for k = 2:n
       disp('bad packet');
       break
   end
+  if ~ishghandle(piano)
+    disp('figure closed')
+    break
+  end
   cnt(k,:) = read(arduino, 2, 'int32');
   t(k) = read(arduino, 1, 'uint32');
 
@@ -63,13 +68,14 @@ for k = 2:n
   else
     raggio = arco / deltatheta; % raggio di curvatura [cm]
     corda = 2 * raggio * sin(deltatheta/2); % spostamento lineare [cm]
+                                            % (teorema della corda)
   end
 
   alpha = (theta(k) + theta(k-1)) / 2; % direzione corda [rad]
 
-  x(k) = x(k-1) + (corda * cos(alpha));
-  y(k) = y(k-1) + (corda * sin(alpha));
-  
+  x(k)    = x(k-1)    + corda*cos(alpha);
+  y(k)    = y(k-1)    + corda*sin(alpha);
+
   badx(k) = badx(k-1) + arco*cos(theta(k));
 
   bady(k) = bady(k-1) + arco*sin(theta(k));
@@ -80,4 +86,5 @@ for k = 2:n
 
 end
 
+%vengono eliminate le variabili temporanee
 clear arduino arco corda alpha deltatheta id;
