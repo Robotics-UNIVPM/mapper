@@ -1,38 +1,43 @@
-n = 20000; %numero di campioni da prendere
-
-ID = 255;
-id = 0;
-
-tempo = animatedline('Color','r');
+grafico = animatedline('Color','r','Marker', 'o');
+disp('Guarda il tempo scorrere...');
 arduino = tcpclient('192.168.0.33', 23);
 
-cnt = zeros(n,2); % passi encoder [#]
-t = zeros(n,1); % tempo dall'avvio del programma [ms]
+ID_1 = 65;      %'A'
+ID_2 = 66;      %'B'
+ID_END = 90;    %'Z'
 
-while true
-    id = read(arduino, 1, 'uint8');
-    if id == ID
-        break
+k = 0; % contatore di cicli
+
+while ishghandle(grafico) % script termina a grafico chiuso
+
+  % CONTROLLO header ----------------------------------
+  chk2 = 0;
+  while chk2 ~= ID_2
+    chk1 = chk2;
+    while chk1 ~= ID_1
+      chk1 = read(arduino, 1, 'uint8');
     end
-    disp('bad start');
-end
-cnt(1,:) = read(arduino, 2, 'int32');
-t(1) = read(arduino, 1, 'uint32');
-
-
-
-for k = 2:n
-  id = read(arduino, 1, 'uint8');
-  if id ~= ID
-      disp('bad packet');
-      break
+    chk1 = 0;
+    chk2 = read(arduino, 1, 'uint8');
   end
-  cnt(k,:) = read(arduino, 2, 'int32');
-  t(k) = read(arduino, 1, 'uint32');
+  % LEGGERE TUTTI i dati del pacchetto qui di seguito: ----
 
-  addpoints(tempo, k, t(k));
-  drawnow
+  cnt = read(arduino, 2, 'int32');
+  t = read(arduino, 1, 'uint32');
+
+  % CONTROLLO chiusura -----------------------------------
+  chkEnd = read(arduino, 1, 'uint8');
+  if chkEnd ~= ID_END
+    chk1 = chkEnd;
+    disp('bad packet');
+    continue
+  end
+  % USARE i dati letti solo da qua in poi -----------------
+
+  addpoints(grafico, k, double(t));
+
+  k = k + 1;
 
 end
 
-clear arduino id;
+clear arduino ID_1 ID_2 ID_END chk1 chk2 chkEnd cnt t k;
