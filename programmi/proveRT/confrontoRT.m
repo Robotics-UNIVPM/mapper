@@ -1,7 +1,8 @@
 n = 2000; %numero di campioni da prendere
 
-ID = 255;
-id = 0;
+ID_1 = 65;      %'A'
+ID_2 = 66;      %'B'
+ID_END = 90;    %'Z'
 
 piano    = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
 badpiano = animatedline('MarkerSize', 2, 'MarkerEdgeColor','g', 'Marker', 'o');
@@ -26,39 +27,44 @@ y = zeros(n,1); % ordinata in [cm]
 badx = zeros(n,1); % ascissa del robot sul piano in [cm]
 bady = zeros(n,1); % ordinata in [cm]
 
-while true
-    id = read(arduino, 1, 'uint8');
-    if id == ID
-        break
-    end
-    disp('bad start');
-end
-cnt(1,:) = read(arduino, 2, 'int32');
-t(1) = read(arduino, 1, 'uint32');
-l(1) = K * cnt(1,1);
-r(1) = K * cnt(1,2);
-theta(1) = (r(1)-l(1))/L;
 x(1) = 0;
 y(1) = 0;
 
 
-for k = 2:n
-  id = read(arduino, 1, 'uint8');
-  if id ~= ID
-      disp('bad packet');
-      break
+for k = 1:n
+
+  % CONTROLLO header ----------------------------------
+  chk2 = 0;
+  while chk2 ~= ID_2
+    chk1 = chk2;
+    while chk1 ~= ID_1
+      chk1 = read(arduino, 1, 'uint8');
+    end
+    chk1 = 0;
+    chk2 = read(arduino, 1, 'uint8');
   end
-  if ~ishghandle(piano)
-    disp('figure closed')
-    break
-  end
+  % LEGGERE TUTTI i dati del pacchetto qui di seguito: ----
+
   cnt(k,:) = read(arduino, 2, 'int32');
   t(k) = read(arduino, 1, 'uint32');
+
+  % CONTROLLO chiusura -----------------------------------
+  chkEnd = read(arduino, 1, 'uint8');
+  if chkEnd ~= ID_END
+    chk1 = chkEnd;
+    disp('bad packet');
+    continue
+  end
+  % USARE i dati letti solo da qua in poi -----------------
 
   l(k) = K * cnt(k,1);
   r(k) = K * cnt(k,2);
 
   theta(k) = (r(k)-l(k))/L;
+
+  if k == 1
+    continue
+  end
 
   arco = ( r(k)-r(k-1) + l(k)-l(k-1) ) / 2; % lunghezza arco percorso [cm]
   deltatheta = theta(k)-theta(k-1); % ampiezza arco percorso [rad]
@@ -68,7 +74,7 @@ for k = 2:n
   else
     raggio = arco / deltatheta; % raggio di curvatura [cm]
     corda = 2 * raggio * sin(deltatheta/2); % spostamento lineare [cm]
-                                            % (teorema della corda)
+    % (teorema della corda)
   end
 
   alpha = (theta(k) + theta(k-1)) / 2; % direzione corda [rad]
@@ -80,11 +86,18 @@ for k = 2:n
 
   bady(k) = bady(k-1) + arco*sin(theta(k));
 
+  if ~ishghandle(piano)
+    disp('figure closed')
+    break
+  end
+
   addpoints(piano, x(k), y(k));
   addpoints(badpiano, badx(k), bady(k));
-  drawnow
-
+  if mod(k,10) == 0
+    drawnow
+  end
 end
 
 %vengono eliminate le variabili temporanee
-clear arduino arco corda alpha deltatheta id;
+clear arduino arco corda alpha deltatheta id k;
+clear ID_1 ID_2 ID_END chk1 chk2 chkEnd;

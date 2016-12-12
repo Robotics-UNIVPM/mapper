@@ -7,7 +7,7 @@ Questo sketch simula gli encoder a velocità costanti usando millis
 #define VELDX 1.45
 
 //ms tra un campione e il successivo
-#define T 100
+#define T 10
 
 int32_t  cntL, cntR;
 uint32_t time;
