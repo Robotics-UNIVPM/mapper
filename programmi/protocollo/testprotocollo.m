@@ -15,7 +15,9 @@ x1 = 0;
 data = [];
 for i = 1:100
     while x2 ~= ID_2
-        x1 = x2;
+        if x2 == ID_1
+            x1 = x2;
+        end
         while x1 ~= ID_1
             x1 = fread(t, 1, 'uint8');
         end
