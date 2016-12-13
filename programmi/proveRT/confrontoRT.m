@@ -53,6 +53,7 @@ for k = 1:n
   if chkEnd ~= ID_END
     chk1 = chkEnd;
     disp('bad packet');
+    k = k - 1;
     continue
   end
   % USARE i dati letti solo da qua in poi -----------------

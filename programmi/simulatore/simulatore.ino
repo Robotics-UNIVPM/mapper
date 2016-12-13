@@ -18,7 +18,7 @@ const uint8_t ID_END = 0x5A; //'Z', per sincronizzare con MATLAB
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(115200, SERIAL_8N1);
 }
 
 void loop()
