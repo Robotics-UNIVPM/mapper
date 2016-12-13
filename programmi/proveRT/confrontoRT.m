@@ -96,9 +96,12 @@ for k = 1:n
 
   addpoints(piano, x(k), y(k));
   addpoints(badpiano, badx(k), bady(k));
+
+  %per risparmiare risorse disegnamo il grafico 10 camponi alla volta
   if mod(k,10) == 0
     drawnow
   end
+
 end
 
 %vengono eliminate le variabili temporanee
