@@ -13,7 +13,9 @@ while ishghandle(grafico) % script termina a grafico chiuso
   % CONTROLLO header ----------------------------------
   chk2 = 0;
   while chk2 ~= ID_2
-    chk1 = chk2;
+    if chk2 == ID_1
+      chk1 = chk2;
+    end
     while chk1 ~= ID_1
       chk1 = read(arduino, 1, 'uint8');
     end
