@@ -28,19 +28,19 @@ void setup() {
 }
 
 void loop() {
-  
+
   cntL = encL.read();
   cntR = encR.read();
 
   if (cntL != oldL || cntR != oldR) {
-      
+
     time = millis();
 
     distance = 0xFF; // valore 255 da inviare se NON si legge il sonar
-    if (i == 4) {
+    if (i == 16) {
       distance = sonar.ping_cm();
     }
-    
+
 
     Serial.write(ID_1); //per sincronizzare con MATLAB
     Serial.write(ID_2); //per sincronizzare con MATLAB
@@ -54,8 +54,8 @@ void loop() {
     oldR = cntR;
 
     i++;
-    if (i == 5) i = 0; // azzero contatore per sonar
-    
+    if (i == 17) i = 0; // azzero contatore per sonar
+
   }
 
 }
