@@ -20,8 +20,6 @@ const uint8_t ID_1 = 0x41,   //'A', per sincronizzare con MATLAB
               ID_END = 0x5A, //'Z', per sincronizzare con MATLAB
               ID_CMD = 0x42; //'B', per identificare i pacchetti in arrivo
 
-uint8_t distance;
-short i=0;
 
 void setup() {
   Serial.begin(115200, SERIAL_8N1);
