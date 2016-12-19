@@ -10,7 +10,7 @@ ID_END = 90;    %'Z'
 piano    = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
 badpiano = animatedline('MarkerSize', 2, 'MarkerEdgeColor','g', 'Marker', 'o');
 
-arduino = tcpclient('192.168.10.11', 23);
+arduino = tcpclient('192.168.10.11', 23); 
 
 D = 8.2; % diametro ruota, [cm]
 L = 15.2; % distanza ruote, [cm]

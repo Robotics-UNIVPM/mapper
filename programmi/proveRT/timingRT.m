@@ -3,7 +3,7 @@ disp('Guarda il tempo scorrere...');
 arduino = tcpclient('192.168.10.11', 23);
 
 ID_1 = 65;      %'A'
-ID_2 = 66;      %'B'
+ID_2 = 66;      %'B' 
 ID_END = 90;    %'Z'
 
 k = 0; % contatore di cicli
