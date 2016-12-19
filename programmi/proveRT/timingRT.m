@@ -1,12 +1,13 @@
 grafico = animatedline('Color','r','Marker', 'o');
 disp('Guarda il tempo scorrere...');
-arduino = tcpclient('192.168.0.33', 23);
+arduino = tcpclient('192.168.10.11', 23);
 
 ID_1 = 65;      %'A'
 ID_2 = 66;      %'B'
 ID_END = 90;    %'Z'
 
 k = 0; % contatore di cicli
+chk1 = 0;
 
 while ishghandle(grafico) % script termina a grafico chiuso
 
@@ -25,6 +26,7 @@ while ishghandle(grafico) % script termina a grafico chiuso
   % LEGGERE TUTTI i dati del pacchetto qui di seguito: ----
 
   cnt = read(arduino, 2, 'int32');
+  sonar = read(arduino, 1, 'uint8');
   t = read(arduino, 1, 'uint32');
 
   % CONTROLLO chiusura -----------------------------------

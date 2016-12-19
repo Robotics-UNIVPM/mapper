@@ -1,3 +1,6 @@
+clear all
+clc
+
 n = 2000; %numero di campioni da prendere
 
 ID_1 = 65;      %'A'
@@ -7,7 +10,7 @@ ID_END = 90;    %'Z'
 piano    = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
 badpiano = animatedline('MarkerSize', 2, 'MarkerEdgeColor','g', 'Marker', 'o');
 
-arduino = tcpclient('192.168.0.33', 23);
+arduino = tcpclient('192.168.10.11', 23);
 
 D = 8.2; % diametro ruota, [cm]
 L = 15.2; % distanza ruote, [cm]
@@ -15,6 +18,7 @@ N = 720; % numero passi encoder [#]
 K = pi * D / N; % distanza percorsa corrispondente a un passo di encoder, [cm]
 
 cnt = zeros(n,2); % passi encoder [#]
+sonar = zeros(n,1);
 t = zeros(n,1); % tempo dall'avvio del programma [ms]
 
 l = zeros(n,1); % distanza misurata sulla ruota sx [cm]
@@ -30,6 +34,7 @@ bady = zeros(n,1); % ordinata in [cm]
 x(1) = 0;
 y(1) = 0;
 
+chk1 = 0;
 
 for k = 1:n
 
@@ -48,6 +53,7 @@ for k = 1:n
   % LEGGERE TUTTI i dati del pacchetto qui di seguito: ----
 
   cnt(k,:) = read(arduino, 2, 'int32');
+  sonar(k) = read(arduino, 1, 'uint8');
   t(k) = read(arduino, 1, 'uint32');
 
   % CONTROLLO chiusura -----------------------------------
