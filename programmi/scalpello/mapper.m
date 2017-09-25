@@ -6,17 +6,16 @@ ID_END = 90;    %'Z'
 ID_CMD = uint8(66);
 
 
-arduino = tcpclient('192.168.10.11', 23, 'Timeout', 600);
+arduino = tcpclient('192.168.0.33', 23, 'Timeout', 600);
 
 map = robotics.BinaryOccupancyGrid(ones(100,100),0.5);
 map.GridLocationInWorld = [-25,-100];
-hold on
 show(map)
 hold on
-piano = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
+traiettoria = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
 
 
-D = 8.0735997228; % diametro ruota, [cm]
+D = 6.2; %8.0735997228; % diametro ruota, [cm]
 L = 15.2; % distanza ruote, [cm]
 N = 720; % numero passi encoder [#]
 K = pi * D / N; % distanza percorsa corrispondente a un passo di encoder, [cm]
@@ -31,13 +30,6 @@ r = zeros(n,1); % distanza misurata sulla ruota dx [cm]
 theta = zeros(n,1); % imbardata [radianti]
 x = zeros(n,1); % ascissa del robot sul piano in [cm]
 y = zeros(n,1); % ordinata in [cm]
-
-badx = zeros(n,1); % ascissa del robot sul piano in [cm]
-bady = zeros(n,1); % ordinata in [cm]
-
-x(1) = 0;
-y(1) = 0;
-
 
 chk1 = 0;
 k = 1; %indice "dinamico"
@@ -78,14 +70,16 @@ while true
   end
 
   t(k)=tempt;
-
-  % Integrazione percorso -----------------------------------------------------
-
+  
   if k == 1
     % il primo loop viene solo usato per impostare il punto di partenza
+    x(1) = 0;
+    y(1) = 0;
     k = k + 1;
     continue
   end
+
+  % Integrazione percorso -----------------------------------------------------
 
   cnt(k,:) = cnt(k,:) - cnt(1,:);
 
@@ -117,21 +111,19 @@ while true
 
 
   % Rappresentazione ----------------------------------------------------------
+  addpoints(traiettoria, x(k), y(k));
 
 
-  %per risparmiare risorse disegnamo il grafico più campioni alla volta
+  %per risparmiare risorse disegnamo il grafico pi? campioni alla volta
   if mod(k,100) == 0
-    hold on
     show(map)
-    hold on
-    addpoints(piano, x(k), y(k));
-    hold on
-    drawnow
+    drawnow 
+    uistack(traiettoria, 'top')
+
   end
   % --------------------------------------------------------------
 
-
-  if ~ishghandle(piano) % se chiudi il grafico il programma termina
+  if ~ishghandle(traiettoria) % se chiudi il grafico il programma termina
     disp('figure closed')
     break
   end

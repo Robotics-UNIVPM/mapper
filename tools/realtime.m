@@ -6,7 +6,7 @@ arduino.BaudRate = 115200;
 fopen(arduino);
 for i=1:1000
     data = str2num(fscanf(arduino));
-    addpoints(h,data(1,1)/1000,data(1,2));
+    h.addpoints(data(1,1)/1000,data(1,2));
     drawnow
 end
 fclose(arduino)

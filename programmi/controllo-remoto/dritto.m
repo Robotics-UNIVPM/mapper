@@ -7,7 +7,7 @@ ID_CMD = uint8(66);
 
 piano    = animatedline('MarkerSize', 2, 'MarkerEdgeColor','r', 'Marker', 'o');
 
-arduino = tcpclient('192.168.10.11', 23, 'Timeout', 600);
+arduino = tcpclient('192.168.0.33', 23, 'Timeout', 600);
 
 D = 8.0735997228; % diametro ruota, [cm]
 L = 15.2; % distanza ruote, [cm]
@@ -105,7 +105,7 @@ while true
 
   addpoints(piano, x(k), y(k));
 
-  %per risparmiare risorse disegnamo il grafico più campioni alla volta
+  %per risparmiare risorse disegnamo il grafico pi?? campioni alla volta
   if mod(k,100) == 0
     drawnow
   end

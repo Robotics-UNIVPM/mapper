@@ -3,7 +3,7 @@ clc
 
 number = 2000;
 
-t = tcpclient('192.168.10.11', 23);
+t = tcpclient('192.168.10.11', 23, 'Timeout', 600);
 enc_l = zeros(number,1);
 enc_r = zeros(number,1);
 tempo = zeros(number,1);
